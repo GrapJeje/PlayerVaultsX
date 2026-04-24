@@ -212,10 +212,10 @@ public class VaultOperations {
      * @return Whether or not the player was allowed to open it.
      */
     public static boolean openOtherVault(Player player, String vaultOwner, String arg) {
-        return openOtherVault(player, vaultOwner, arg, true);
+        return openOtherVault(player, vaultOwner, arg, true, getMaxVaultSize(vaultOwner), null);
     }
 
-    public static boolean openOtherVault(Player player, String vaultOwner, String arg, boolean send) {
+    public static boolean openOtherVault(Player player, String vaultOwner, String arg, boolean send, int size, String vaultName) {
         if (isLocked()) {
             return false;
         }
@@ -237,7 +237,7 @@ public class VaultOperations {
             PlayerVaults.getInstance().getTL().mustBeNumber().title().send(player);
         }
 
-        Inventory inv = VaultManager.getInstance().loadOtherVault(vaultOwner, number, getMaxVaultSize(vaultOwner));
+        Inventory inv = VaultManager.getInstance().loadOtherVault(vaultOwner, number, size, vaultName);
         String name = vaultOwner;
         try {
             OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(UUID.fromString(vaultOwner));

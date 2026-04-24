@@ -113,7 +113,7 @@ public class VaultManager {
      * @param name The holder of the vault.
      * @param number The vault number.
      */
-    public Inventory loadOtherVault(String name, int number, int size) {
+    public Inventory loadOtherVault(String name, int number, int size, String vaultName) {
         if (size % 9 != 0) {
             size = PlayerVaults.getInstance().getDefaultVaultSize();
         }
@@ -130,7 +130,6 @@ public class VaultManager {
             // Not a player
         }
 
-        String title = PlayerVaults.getInstance().getVaultTitle(String.valueOf(number));
         VaultViewInfo info = new VaultViewInfo(name, number);
         Inventory inv;
         VaultHolder vaultHolder = new VaultHolder(number);
@@ -139,7 +138,7 @@ public class VaultManager {
             inv = PlayerVaults.getInstance().getOpenInventories().get(info.toString());
         } else {
             YamlConfiguration playerFile = getPlayerVaultFile(holder, true);
-            Inventory i = getInventory(vaultHolder, holder, playerFile, size, number, title);
+            Inventory i = getInventory(vaultHolder, holder, playerFile, size, number, vaultName);
             if (i == null) {
                 return null;
             } else {

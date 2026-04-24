@@ -132,7 +132,7 @@ public class SignListener implements Listener {
                                 return;
                             }
                         } else {
-                            if (!VaultOperations.openOtherVault(player, owner, numS, false)) {
+                            if (!VaultOperations.openOtherVault(player, owner, numS, false, 27, "SignVault-" + num)) {
                                 PlayerVaults.debug("Player " + player.getName() + " failed to open sign vault!");
                                 return;
                             }

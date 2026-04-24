@@ -195,7 +195,7 @@ public class Translation {
     }
 
     private static class Placeholders {
-        private TL title = TL.of("<dark_red>[<normal>PlayerVaults<dark_red>]: ");
+        private TL title = TL.of("§b§lVaults ");
     }
 
     private static class Translations {
